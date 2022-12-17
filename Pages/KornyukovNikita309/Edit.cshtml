@@ -1,0 +1,94 @@
+﻿@page
+@model WebApplication2.Pages.KornyukovNikita309.Edit
+@{
+}
+<br>
+<h2>Edit Sale</h2>
+@if(Model.errorMessage.Length>0)
+{
+<div class=" alert alert-warning alert-dismissible fade show" role='alert'>
+    <strong>@Model.errorMessage</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+}
+<form method="POST">
+    <input type= hidden name="id" value="@Model.salesInfo.id">
+    <div>
+        <label class="col-sm-3 col-form-label">
+            Pharmaceuticals Id
+        </label>
+        <select name="pharmaceuticals_id">
+            <option value="@Model.salesInfo.pharmaceuticals_id">@Model.salesInfo.pharmaceuticals_id</option>
+            @foreach (var item in Model.idList)
+            {
+                if (item.pharmId!=Model.salesInfo.pharmaceuticals_id)
+                {
+                <option value="@item.pharmId">@item.pharmId</option>
+                }
+            }
+        </select>
+    </div>
+    <div>
+        <label class="col-sm-3 col-form-label">
+            Price
+        </label>
+        <div>
+            <input type="text" class="form-control" name="price" value="@Model.salesInfo.price">
+        </div>
+    </div>
+    <div>
+        <label class="col-sm-3 col-form-label">
+            Count
+        </label>
+        <div>
+            <input type="text" class="form-control" name="count" value="@Model.salesInfo.count">
+        </div>
+    </div>
+    <div>
+        <label class="col-sm-3 col-form-label">
+            Cash_receipts_id
+        </label>
+        <select name="cash_receipts_id">
+            <option value="@Model.salesInfo.cash_receipts_id">@Model.salesInfo.cash_receipts_id</option>
+            @foreach (var item in Model.idList2)
+            {
+                if (item.cashRpId!=Model.salesInfo.cash_receipts_id){
+                <option value="@item.cashRpId">@item.cashRpId</option>
+                }
+            }
+        </select>
+
+    </div>
+    <div>
+        <label class="col-sm-3 col-form-label">Pharmacy_points_id</label>
+        <select name="pharmacy_points_id">
+            <option value="@Model.salesInfo.pharmacy_points_id">@Model.salesInfo.pharmacy_points_id</option>
+            @foreach(var item in Model.idList3)
+            {
+                if (item.pharmPointId != Model.salesInfo.pharmacy_points_id)
+                {
+                    <option value="@item.pharmPointId">@item.pharmPointId</option>
+                }
+            }
+        </select>
+    </div>
+    @if (Model.successMessage.Length > 0)
+    {
+    <div class="row mb-3">
+        <div class="col-sm-9">
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>@Model.successMessage</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+    }
+    <div class="row mb-3">
+        <div class="offset-sm-3 col-sm-3 d-grid">
+            <button type="submit" href="/KornyukovNikita309/Index" class="btn btn-outline-success">Submit</button>
+        </div>
+        <div class="col-sm-3 d-grid">
+            <a class="btn btn-outline-primary" href="/" role="button">Cancel</a>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,78 @@
+﻿@page
+@model WebApplication2.Pages.KornyukovNikita309.Pharm.CreateModel
+@{
+}
+<br>
+<h2>New Pharmaceutical</h2>
+@if (Model.errorMessage.Length > 0)
+{
+    <div class=" alert alert-warning alert-dismissible fade show" role='alert'>
+        <strong>@Model.errorMessage</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+<form method="POST">
+    <div>
+        <label class="col-sm-3 col-form-label">
+            Name
+        </label>
+        <div>
+            <input type="text" class="form-control" name="name" value="@Model.pharmInfo.name">
+        </div>
+    </div>
+    <div>
+        <label class="col-sm-3 col-form-label">
+            Packing
+        </label>
+        <div>
+            <input type="text" class="form-control" name="packing" value="@Model.pharmInfo.packing">
+        </div>
+    </div>
+    <div>
+        <label class="col-sm-3 col-form-label">
+            Price
+        </label>
+        <div>
+            <input type="text" class="form-control" name="price" value="@Model.pharmInfo.price">
+        </div>
+    </div>
+    <div>
+        <label class="col-sm-3 col-form-label">
+            Manufactures Name
+        </label>
+        <select name="manufactures_id">
+            @foreach (var item in Model.idList)
+            {
+                <option>@item.manufacturesId</option>
+            }
+        </select>
+    </div>
+    <div>
+        <label class="col-sm-3 col-form-label">Pharmaceutical Type</label>
+        <select name="pharmaceuticals_types_id">
+            @foreach (var item in Model.idList2)
+            {
+                <option>@item.PharmTypeId</option>
+            }
+        </select>
+    </div>
+    @if (Model.succesMessage.Length > 0)
+    {
+        <div class="row mb-3">
+            <div class="col-sm-9">
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>@Model.succesMessage</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            </div>
+        </div>
+    }
+    <div class="row mb-3">
+        <div class="offset-sm-3 col-sm-3 d-grid">
+            <button type="submit" href="/KornyukovNikita309/Pharm/Index" class="btn btn-outline-success">Submit</button>
+        </div>
+        <div class="col-sm-3 d-grid">
+            <a class="btn btn-outline-primary" href="/" role="button">Cancel</a>
+        </div>
+    </div>
+</form>

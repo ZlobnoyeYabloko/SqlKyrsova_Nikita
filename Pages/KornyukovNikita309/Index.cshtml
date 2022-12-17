@@ -1,0 +1,43 @@
+﻿@page
+@model WebApplication2.Pages.KornyukovNikita309.IndexModel
+@{
+}
+<br>
+<h2>List of Sales</h2>
+<a class="btn btn-primary btn-sm" href="/KornyukovNikita309/Create">New Sale</a>
+<form method="POST">
+    <input type="search" placeholder="Enter the price of Sale" name="price" />
+    <input type="submit" value="Search" class="btn btn-primary" />
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Pharmaceuticals Name</th>
+            <th>Price</th>
+            <th>Count</th>
+            <th>CashReceiptsDiscount</th>
+            <th>PharmacyPoint Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.listSale)
+        {
+            if (@Model.id.Length == 0 || item.price.Contains(Model.id))
+            {
+                <tr>
+                    <td>@item.id</td>
+                    <td>@item.pharmaceuticals_id</td>
+                    <td>@item.price</td>
+                    <td>@item.count</td>
+                    <td>@item.cash_receipts_id</td>
+                    <td>@item.pharmacy_points_id</td>
+                    <td>
+                    <a class="btn btn-primary btn-sm" href="/KornyukovNikita309/Edit?id=@item.id">Edit</a>
+                        <a class="btn btn-danger btn-sm" href="/KornyukovNikita309/Delete?id=@item.id">Delete</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

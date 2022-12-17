@@ -1,0 +1,40 @@
+﻿@page
+@model WebApplication2.Pages.KornyukovNikita309.Pharm.IndexModel
+@{
+}
+<br>
+<h2>List of Pharms</h2>
+<a class="btn btn-primary btn-sm" href="/KornyukovNikita309/Pharm/Create">New Pharmaceutical</a>
+<form method="POST">
+    <input type="search" placeholder="Enter the name of Pharm" name="name" />
+    <input type="submit" value="Search" class="btn btn-primary" />
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Packing</th>
+            <th>Price</th>
+            <th>Manufacturers name</th>
+            <th>Pharm Types</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.listPharm)
+        {
+                <tr>
+                <td>@item.id</td>
+                <td>@item.name</td>
+                <td>@item.packing</td>
+                <td>@item.price</td>
+                <td>@item.manufactures_id</td>
+                <td>@item.pharmaceuticals_types_id</td>
+                <td>
+                    <a class="btn btn-primary btn-sm" href="/KornyukovNikita309/Pharm/Edit?id=@item.id">Edit</a>
+                    <a class="btn btn-danger btn-sm" href="/KornyukovNikita309/Pharm/Delete?id=@item.id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

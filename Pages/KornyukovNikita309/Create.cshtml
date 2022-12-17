@@ -1,0 +1,81 @@
+﻿@page
+@model WebApplication2.Pages.KornyukovNikita309.CreateModel
+@{
+}
+<br>
+<h2>New Sale</h2>
+@if(Model.errorMessage.Length>0)
+{
+    <div class=" alert alert-warning alert-dismissible fade show" role='alert'>
+        <strong>@Model.errorMessage</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+<form method="POST">
+    <div>
+        <label class="col-sm-3 col-form-label">
+            Pharmaceuticals Name
+         </label>
+        <select name="pharmaceuticals_id">
+            @foreach (var item in Model.idList)
+            {
+                <option>@item.pharmId</option>
+            }
+        </select>
+    </div>
+    <div>
+        <label class="col-sm-3 col-form-label">
+            Price
+        </label>
+        <div>
+            <input type="text" class="form-control" name="price" value="@Model.salesInfo.price">
+        </div>
+    </div>
+    <div>
+        <label class="col-sm-3 col-form-label">
+            Count
+        </label>
+        <div>
+            <input type="text" class="form-control" name="count" value="@Model.salesInfo.count">
+        </div>
+    </div>
+    <div>
+        <label class="col-sm-3 col-form-label">
+            Cash Receipts Discount
+        </label>
+        <select name="cash_receipts_id">
+            @foreach (var item in Model.idList2)
+            {
+                <option>@item.cashRpId</option>
+            }
+        </select>
+    </div>
+    <div>
+        <label class="col-sm-3 col-form-label">Pharmacy Point Name</label>
+        <select name="pharmacy_points_id">
+            @foreach(var item in Model.idList3)
+            {
+                <option>@item.pharmPointId</option>
+            }
+        </select>
+    </div>
+    @if(Model.succesMessage.Length>0)
+    {
+        <div class="row mb-3">
+            <div class="col-sm-9">
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>@Model.succesMessage</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            </div>
+        </div>
+    }
+    <div class="row mb-3">
+        <div class="offset-sm-3 col-sm-3 d-grid">
+            <button type="submit" href="/KornyukovNikita309/Index"  class="btn btn-outline-success">Submit</button>
+        </div>
+        <div class="col-sm-3 d-grid">
+            <a class="btn btn-outline-primary" href="/" role="button">Cancel</a>
+        </div>
+    </div>
+</form>
